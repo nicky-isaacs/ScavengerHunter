@@ -25,21 +25,20 @@
 </div>
 
 
-<% unless @existing_scavenger_hunt_items.nil? || @existing_scavenger_hunt_items.empty? %>
-<div class="well" id="scavenger_hunt_items_wrapper">
-
+<% if !@existing_scavenger_hunt_items.nil? && !@existing_scavenger_hunt_items.empty? %>
+	<table class"table table-striped">
+		<thead>
+			<td>Name</td>
+			<td>Description</td>
+		</thead>
+		<tbody>
 	<% @existing_scavenger_hunt_items.each_with_index do |hunt_item, index| %>
-		<div class="scavenger_hunt_item_wrapper">
-			<input type="checkbox" name="checkbox" id="<%= "checkbox##{index}"  %>" value="value" <%= "checked" if hunt_item.is_completed? %> >
-			<label for="<%= "checkbox##{index}"  %>"><% hunt_item.name %></label>
-			<div>
-				<p><%= hunt_item.description %></p>
-			</div>
-		</div>
-
-		<% 3.times do %>
-			<br>
-		<% end %>
+		<tr class="scavenger_hunt_item_wrapper">
+			<td><input type="checkbox" name="checkbox" id="<%= "checkbox##{index}"  %>" value="value" <%= "checked" if hunt_item.is_completed? %> ></td>
+			<td><%= hunt_item.name %></td>
+ 			<td><%= hunt_item.description %></td>
+		</tr>
 	<% end %>
-</div>
+		</tbody>
+	</table>
 <% end %>

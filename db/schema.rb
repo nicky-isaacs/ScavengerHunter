@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205041020) do
+ActiveRecord::Schema.define(:version => 20140205041435) do
 
   create_table "scavenger_hunt_items", :force => true do |t|
     t.string   "name"
@@ -20,15 +20,16 @@ ActiveRecord::Schema.define(:version => 20140205041020) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.boolean  "completed"
-    t.integer  "scaventer_hunt_id"
+    t.integer  "scavenger_hunt_id"
   end
 
   create_table "scavenger_hunts", :force => true do |t|
     t.string   "name"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "scavenger_hunt_id"
   end
 
 end
