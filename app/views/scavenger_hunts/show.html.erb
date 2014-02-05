@@ -23,3 +23,23 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+
+<% unless @existing_scavenger_hunt_items.nil? || @existing_scavenger_hunt_items.empty? %>
+<div class="well" id="scavenger_hunt_items_wrapper">
+
+	<% @existing_scavenger_hunt_items.each_with_index do |hunt_item, index| %>
+		<div class="scavenger_hunt_item_wrapper">
+			<input type="checkbox" name="checkbox" id="<%= "checkbox##{index}"  %>" value="value" <%= "checked" if hunt_item.is_completed? %> >
+			<label for="<%= "checkbox##{index}"  %>"><% hunt_item.name %></label>
+			<div>
+				<p><%= hunt_item.description %></p>
+			</div>
+		</div>
+
+		<% 3.times do %>
+			<br>
+		<% end %>
+	<% end %>
+</div>
+<% end %>
