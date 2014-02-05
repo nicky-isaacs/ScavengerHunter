@@ -1,4 +1,10 @@
 class ScavengerHuntsController < ApplicationController
+
+  # Logic filters
+  before_filter :set_scavenger_hunt
+  before_filter :setup_instance_variables, :only => [:index, :edit]
+
+
   # GET /scavenger_hunts
   # GET /scavenger_hunts.json
   def index
@@ -79,5 +85,15 @@ class ScavengerHuntsController < ApplicationController
       format.html { redirect_to scavenger_hunts_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def set_scavenger_hunt
+    @scavenger_hunt = ScavengerHunt.find(params[:id])
+  end
+
+  def setup_instance_variables
+    @existing_scavenger_hunt_items = @scavenger_hunt.scavenger_hunt_items
   end
 end
