@@ -1,0 +1,37 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
+  adapter: mysql
+  database: scavenger_hunter_dev
+  host: localhost
+	port: 3306
+	username: root
+	password:
+	pool: 5
+  timeout: 5000
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql
+  database: scavenger_hunter_test
+  host: localhost
+	port: 3306
+	pool: 25
+	username: root
+	password:
+  timeout: 5000
+
+production:
+  adapter: mysql
+  database: scavenger_hunter_prod
+	host: localhost
+	port: 3306
+	username: hunter
+	password: Th3Hunt3d
+  pool: 5
+  timeout: 5000

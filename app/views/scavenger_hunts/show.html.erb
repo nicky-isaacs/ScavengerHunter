@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @scavenger_hunt.name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @scavenger_hunt.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @scavenger_hunt.end_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_scavenger_hunt_path(@scavenger_hunt) %> |
+<%= link_to 'Back', scavenger_hunts_path %>
