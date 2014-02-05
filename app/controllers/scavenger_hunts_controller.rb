@@ -1,7 +1,7 @@
 class ScavengerHuntsController < ApplicationController
 
   # Logic filters
-  before_filter :set_scavenger_hunt, :except => [:index]
+  before_filter :set_scavenger_hunt, :except => [:index, :new]
 
 
   # GET /scavenger_hunts
