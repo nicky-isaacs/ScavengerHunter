@@ -1,3 +1,20 @@
 // Place all the styles related to the scavenger_hunts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#total-points-wrapper{
+  position: relative;
+  float: right;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: #000000;
+  background-color: lightgoldenrodyellow;
+}
+
+p#total-points{
+  color: #000000;
+  margin-left:auto;
+  margin-right:auto;
+  width:70%;
+}

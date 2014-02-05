@@ -9,5 +9,20 @@ class ScavengerHuntItem < ActiveRecord::Base
 	def complete_item!
 		self.completed = true
 		self.save!
-	end
+  end
+
+  def uncomplete_item!
+    self.completed = false
+    self.save!
+  end
+
+  def complete_item
+    self.completed = true
+    self.save
+  end
+
+  def uncomplete_item
+    self.completed = false
+    self.save
+  end
 end

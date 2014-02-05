@@ -20,9 +20,9 @@
         <td><%= scavenger_hunt.start_date %></td>
         <td><%= scavenger_hunt.end_date %></td>
         <td>
+          <%= link_to('Play!', scavenger_hunt, :class => 'btn btn-success btn-mini')  %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_scavenger_hunt_path(scavenger_hunt), :class => 'btn btn-mini' %>
-          <%= link_to('Show', scavenger_hunt, :class => 'btn btn-mini')  %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       scavenger_hunt_path(scavenger_hunt),
                       :method => :delete,
