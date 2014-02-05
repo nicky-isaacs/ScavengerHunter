@@ -44,7 +44,7 @@
                 <td><input type="checkbox" name="checkbox" id="<%= "checkbox##{index}"  %>" value="value" <%= "checked" if hunt_item.is_completed? %> ></td>
                 <td><%= hunt_item.name %></td>
                 <td><%= hunt_item.description %></td>
-                <td><%= hunt_item.points %></td>
+                <td class="points"><%= hunt_item.points %></td>
             </tr>
         <% end %>
         </tbody>

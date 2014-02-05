@@ -19,6 +19,19 @@ uncheckItemUI = function(id){
     $().prop('checked');
 }
 
+handleUncheckItem = function(element){
+    var abs_point_val = $(element).parents('tr').find('.points').html();
+    abs_point_val = parseInt(abs_point_val);
+    var delta = -1 * abs_point_val;
+    updatePointsTotalAndUI(delta);
+};
+
+handleCheckItem = function(element){
+    var abs_point_val = $(element).parents('tr').find('.points').html();
+    var delta = parseInt(abs_point_val);
+    updatePointsTotalAndUI(delta);
+};
+
 updateItemStatus = function(id, isComplete){
     var onSuccess = function(data){
 
@@ -45,8 +58,9 @@ updateItemStatus = function(id, isComplete){
     });
 };
 
-updatePointsTotal = function(delta){
+updatePointsTotalAndUI = function(delta){
     totalPoints += delta;
+    updatePointsTotalUI()
 };
 
 updatePointsTotalUI = function(){
@@ -54,9 +68,9 @@ updatePointsTotalUI = function(){
 };
 
 initTotalPoints = function(){
-    var points = getPoints();
+    var points = getPoints(true);
     $(points).each(function(index, item){
-        updatePointsTotal(item);
+        totalPoints += item;
         console.log("points: " + item);
     });
     updatePointsTotalUI();
@@ -67,13 +81,17 @@ getPoints = function(checkedOnly){
     $('table#items-table tbody tr').each(function(){
         var tds = $(this).children('td');
         var checked = $(tds[0]).checked;
-        if(checked){
+        if((checkedOnly && checked) || !checkedOnly ){
             var points = $(tds[tds.length - 1]).html();
             points = parseInt(points);
             answer.push(points);
         }
     });
     return answer;
+}
+
+itemRows = function(){
+    return $('table#items-table tbody tr');
 }
 
 // Whether the scavenger hunt is still open
@@ -85,6 +103,14 @@ stillOpen = function(){
 
 $( document ).ready(function(){
     initTotalPoints();
+    itemRows().children('td').children('input').change(function(){
+        if($(this).is(":checked")){
+            handleCheckItem(this);
+        } else{
+            handleUncheckItem(this);
+        }
+    });
+
 
     if(!stillOpen){
         lockUI();
